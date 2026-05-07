@@ -235,7 +235,7 @@ form.addEventListener('submit', event => {
   const button = form.querySelector('button[type="submit"]');
   button.disabled = true;
   status.textContent = 'Submitting…';
-  fetch('http://localhost:3000/api/rsvp', {
+  fetch('/api/rsvp', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ name, drink })

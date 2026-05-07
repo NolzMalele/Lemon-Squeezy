@@ -263,7 +263,7 @@ function updateSummary(guests) {
 
 function loadGuests() {
   guestBody.innerHTML = '';
-  fetch('http://localhost:3000/api/guests').then(r => r.json()).then(guests => {
+  fetch('/api/guests').then(r => r.json()).then(guests => {
     updateSummary(guests);
     if (!guests.length) {
       emptyState.textContent = 'No RSVPs yet. The guest list will appear here once submissions are received.';
@@ -279,7 +279,7 @@ function loadGuests() {
     document.querySelectorAll('.remove-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         if (!confirm(`Remove ${btn.closest('tr').children[0].textContent} from the guest list?`)) return;
-        fetch('http://localhost:3000/api/guests/' + btn.dataset.id, { method: 'DELETE' }).then(r => {
+        fetch('/api/guests/' + btn.dataset.id, { method: 'DELETE' }).then(r => {
           if (r.ok) loadGuests();
         });
       });

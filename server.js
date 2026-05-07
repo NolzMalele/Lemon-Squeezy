@@ -5,7 +5,9 @@ const cors = require('cors');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const DATA_FILE = path.join(__dirname, 'guests.json');
+const DATA_FILE = process.env.VERCEL
+  ? path.join('/tmp', 'guests.json')
+  : path.join(__dirname, 'guests.json');
 
 app.use(cors());
 app.use(express.json());
@@ -13,7 +15,15 @@ app.use(express.static(path.join(__dirname)));
 
 function readGuests() {
   try {
-    if (!fs.existsSync(DATA_FILE)) return [];
+    if (!fs.existsSync(DATA_FILE)) {
+      if (process.env.VERCEL) {
+        const source = path.join(__dirname, 'guests.json');
+        if (fs.existsSync(source)) {
+          fs.copyFileSync(source, DATA_FILE);
+        }
+      }
+      return [];
+    }
     return JSON.parse(fs.readFileSync(DATA_FILE, 'utf8'));
   } catch { return []; }
 }
@@ -61,6 +71,10 @@ app.get('/api/stats', (_req, res) => {
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`RSVP server running at http://localhost:${PORT}`);
-});
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`RSVP server running at http://localhost:${PORT}`);
+  });
+}
+
+module.exports = app;
