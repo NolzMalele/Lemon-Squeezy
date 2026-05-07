@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luncheon Invitation – Evodia Lenong</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400&family=Pinyon+Script&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+--nude-deep: #c4a882;
+--nude-mid: #d9c4a8;
+--nude-light: #efe5d6;
+--nude-pale: #f8f2ea;
+--nude-cream: #fdf9f4;
+--gold: #b8976a;
+--dark: #4a3b2c;
+--text: #5c4a35;
+--soft: #8a7260;
+}
+
+html, body {
+height: 100%;
+overflow: hidden;
+}
+
+body {
+background: #e8ddd0;
+display: flex;
+align-items: center;
+justify-content: center;
+font-family: 'Jost', sans-serif;
+background-image:
+radial-gradient(ellipse at 20% 20%, rgba(196,168,130,0.18) 0%, transparent 60%),
+radial-gradient(ellipse at 80% 80%, rgba(184,151,106,0.14) 0%, transparent 60%);
+}
+
+.card {
+background: var(--nude-cream);
+width: min(420px, 96vw);
+height: min(96vh, 780px);
+position: relative;
+display: flex;
+flex-direction: column;
+align-items: center;
+overflow: hidden;
+box-shadow:
+0 0 0 1px rgba(184,151,106,0.3),
+0 4px 6px rgba(74,59,44,0.06),
+0 20px 60px rgba(74,59,44,0.18),
+0 60px 100px rgba(74,59,44,0.1);
+animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes fadeUp {
+from { opacity: 0; transform: translateY(24px); }
+to   { opacity: 1; transform: translateY(0); }
+}
+
+.card::before {
+content: '';
+position: absolute;
+inset: 8px;
+border: 1px solid rgba(184,151,106,0.35);
+pointer-events: none;
+z-index: 10;
+}
+
+.card::after {
+content: '';
+position: absolute;
+inset: 12px;
+border: 1px solid rgba(184,151,106,0.18);
+pointer-events: none;
+z-index: 10;
+}
+
+.corner {
+position: absolute;
+width: 30px; height: 30px;
+z-index: 20;
+}
+.corner svg { width: 100%; height: 100%; }
+.corner--tl { top: 4px; left: 4px; }
+.corner--tr { top: 4px; right: 4px; transform: scaleX(-1); }
+.corner--bl { bottom: 4px; left: 4px; transform: scaleY(-1); }
+.corner--br { bottom: 4px; right: 4px; transform: scale(-1,-1); }
+
+.top-art {
+width: 100%;
+height: 130px;
+flex-shrink: 0;
+position: relative;
+background: linear-gradient(165deg, var(--nude-light) 0%, var(--nude-pale) 60%, var(--nude-cream) 100%);
+display: flex;
+align-items: center;
+justify-content: center;
+overflow: hidden;
+}
+
+.top-art::after {
+content: '';
+position: absolute;
+bottom: 0; left: 0; right: 0;
+height: 20px;
+background: linear-gradient(to bottom, transparent, var(--nude-cream));
+}
+
+.lemon-branch {
+width: 240px; height: 120px;
+opacity: 0;
+animation: bloomIn 1.6s 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes bloomIn {
+from { opacity: 0; transform: scale(0.92) translateY(8px); }
+to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes slideIn {
+from { opacity: 0; transform: translateY(6px); }
+to   { opacity: 1; transform: translateY(0); }
+}
+
+.content {
+flex: 1;
+width: 100%;
+padding: 0px 36px 14px;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: space-between;
+}
+
+.tagline {
+font-family: 'Jost', sans-serif;
+font-weight: 200;
+font-size: 8.5px;
+letter-spacing: 0.38em;
+color: var(--soft);
+text-transform: uppercase;
+text-align: center;
+opacity: 0;
+animation: slideIn 1s 0.7s ease forwards;
+}
+
+.hero {
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 0;
+}
+
+.headline {
+font-family: 'Cormorant Garamond', serif;
+font-weight: 300;
+font-style: italic;
+font-size: 12px;
+letter-spacing: 0.08em;
+color: var(--text);
+text-align: center;
+opacity: 0;
+animation: slideIn 1s 0.85s ease forwards;
+}
+
+.squeeze {
+font-family: 'Pinyon Script', cursive;
+font-size: 52px;
+color: var(--gold);
+line-height: 1;
+text-shadow: 0 2px 16px rgba(184,151,106,0.22);
+opacity: 0;
+animation: slideIn 1s 0.95s ease forwards;
+}
+
+.you-text {
+font-family: 'Cormorant Garamond', serif;
+font-weight: 300;
+font-size: 20px;
+letter-spacing: 0.32em;
+text-transform: uppercase;
+color: var(--text);
+opacity: 0;
+animation: slideIn 1s 1.0s ease forwards;
+}
+
+.divider {
+width: 100px; height: 1px;
+background: linear-gradient(to right, transparent, var(--nude-deep), transparent);
+opacity: 0;
+animation: slideIn 1s 1.1s ease forwards;
+}
+
+.sub {
+font-family: 'Cormorant Garamond', serif;
+font-style: italic;
+font-weight: 300;
+font-size: 11.5px;
+color: var(--soft);
+text-align: center;
+line-height: 1.55;
+opacity: 0;
+animation: slideIn 1s 1.18s ease forwards;
+}
+
+.name-block {
+text-align: center;
+opacity: 0;
+animation: slideIn 1s 1.26s ease forwards;
+}
+
+.honoree {
+font-family: 'Cormorant Garamond', serif;
+font-weight: 500;
+font-size: 22px;
+letter-spacing: 0.14em;
+text-transform: uppercase;
+color: var(--dark);
+display: block;
+}
+
+.bundle {
+font-family: 'Cormorant Garamond', serif;
+font-weight: 300;
+font-style: italic;
+font-size: 11px;
+color: var(--soft);
+display: block;
+margin-top: 1px;
+}
+
+.divider-ornament {
+display: flex;
+align-items: center;
+gap: 8px;
+width: 160px;
+opacity: 0;
+animation: slideIn 1s 1.34s ease forwards;
+}
+.divider-ornament::before, .divider-ornament::after {
+content: ''; flex: 1; height: 1px;
+}
+.divider-ornament::before { background: linear-gradient(to right, transparent, var(--nude-deep)); }
+.divider-ornament::after  { background: linear-gradient(to left, transparent, var(--nude-deep)); }
+.orn-diamond {
+width: 4px; height: 4px;
+background: var(--gold);
+transform: rotate(45deg);
+flex-shrink: 0;
+}
+
+.details {
+width: 100%;
+display: flex;
+flex-direction: column;
+gap: 7px;
+opacity: 0;
+animation: slideIn 1s 1.42s ease forwards;
+}
+
+.detail-row { display: flex; align-items: flex-start; gap: 10px; }
+
+.detail-icon {
+width: 18px; height: 18px;
+background: var(--nude-light);
+border: 1px solid rgba(184,151,106,0.4);
+border-radius: 50%;
+display: flex; align-items: center; justify-content: center;
+flex-shrink: 0; margin-top: 1px;
+}
+.detail-icon svg {
+width: 9px; height: 9px;
+stroke: var(--gold); fill: none;
+stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round;
+}
+
+.detail-text { display: flex; flex-direction: column; }
+
+.detail-label {
+font-family: 'Jost', sans-serif;
+font-weight: 200;
+font-size: 7.5px;
+letter-spacing: 0.28em;
+text-transform: uppercase;
+color: var(--gold);
+}
+
+.detail-value {
+font-family: 'Cormorant Garamond', serif;
+font-size: 12.5px;
+color: var(--dark);
+line-height: 1.35;
+}
+
+.detail-value a {
+color: var(--gold); text-decoration: none;
+font-style: italic; font-size: 11px;
+}
+
+.theme-pill {
+display: inline-block;
+background: linear-gradient(135deg, var(--nude-light), var(--nude-mid));
+border: 1px solid rgba(184,151,106,0.4);
+padding: 1px 8px;
+font-family: 'Jost', sans-serif;
+font-weight: 300; font-size: 8.5px;
+letter-spacing: 0.22em; text-transform: uppercase;
+color: var(--text); border-radius: 20px;
+}
+
+.rsvp-block {
+background: linear-gradient(135deg, var(--nude-light) 0%, rgba(239,229,214,0.6) 100%);
+border: 1px solid rgba(184,151,106,0.5);
+padding: 22px 20px;
+width: 100%;
+text-align: center;
+opacity: 0;
+animation: slideIn 1s 1.5s ease forwards;
+}
+
+.rsvp-title {
+font-family: 'Jost', sans-serif;
+font-weight: 300; font-size: 8px;
+letter-spacing: 0.35em; text-transform: uppercase;
+color: var(--dark); margin-bottom: 12px;
+}
+
+.rsvp-button {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+gap: 8px;
+padding: 12px 22px;
+background: linear-gradient(135deg, var(--nude-mid), var(--gold));
+color: #fff;
+text-decoration: none;
+font-family: 'Jost', sans-serif;
+font-weight: 500;
+letter-spacing: 0.08em;
+text-transform: uppercase;
+border-radius: 999px;
+box-shadow: 0 10px 20px rgba(74,59,44,0.14);
+transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.rsvp-button:hover { transform: translateY(-1px); box-shadow: 0 14px 24px rgba(74,59,44,0.18); }
+
+.rsvp-note {
+font-family: 'Cormorant Garamond', serif;
+font-size: 12px;
+color: var(--soft);
+margin-top: 12px;
+}
+
+.closing-note {
+font-family: 'Cormorant Garamond', serif;
+font-style: italic;
+font-weight: 300;
+font-size: 11px;
+color: var(--soft);
+text-align: center;
+letter-spacing: 0.04em;
+line-height: 1.5;
+opacity: 0;
+animation: slideIn 1s 1.58s ease forwards;
+}
+
+.bottom-art {
+opacity: 0;
+animation: slideIn 1s 1.6s ease forwards;
+}
+.bottom-art svg { width: 80px; height: 24px; opacity: 0.4; }
+
+</style>
+</head>
+<body>
+
+<div class="card">
+
+  <div class="corner corner--tl">
+    <svg viewBox="0 0 36 36" fill="none"><path d="M4 32 L4 8 Q4 4 8 4 L32 4" stroke="#b8976a" stroke-width="1" stroke-linecap="round"/><path d="M4 20 Q4 4 20 4" stroke="#b8976a" stroke-width="0.5" opacity="0.5"/><circle cx="4" cy="4" r="2" fill="#b8976a" opacity="0.6"/><circle cx="4" cy="32" r="1.5" fill="#b8976a" opacity="0.4"/><circle cx="32" cy="4" r="1.5" fill="#b8976a" opacity="0.4"/></svg>
+  </div>
+  <div class="corner corner--tr">
+    <svg viewBox="0 0 36 36" fill="none"><path d="M4 32 L4 8 Q4 4 8 4 L32 4" stroke="#b8976a" stroke-width="1" stroke-linecap="round"/><path d="M4 20 Q4 4 20 4" stroke="#b8976a" stroke-width="0.5" opacity="0.5"/><circle cx="4" cy="4" r="2" fill="#b8976a" opacity="0.6"/></svg>
+  </div>
+  <div class="corner corner--bl">
+    <svg viewBox="0 0 36 36" fill="none"><path d="M4 32 L4 8 Q4 4 8 4 L32 4" stroke="#b8976a" stroke-width="1" stroke-linecap="round"/><path d="M4 20 Q4 4 20 4" stroke="#b8976a" stroke-width="0.5" opacity="0.5"/><circle cx="4" cy="4" r="2" fill="#b8976a" opacity="0.6"/></svg>
+  </div>
+  <div class="corner corner--br">
+    <svg viewBox="0 0 36 36" fill="none"><path d="M4 32 L4 8 Q4 4 8 4 L32 4" stroke="#b8976a" stroke-width="1" stroke-linecap="round"/><path d="M4 20 Q4 4 20 4" stroke="#b8976a" stroke-width="0.5" opacity="0.5"/><circle cx="4" cy="4" r="2" fill="#b8976a" opacity="0.6"/></svg>
+  </div>
+
+  <div class="top-art">
+    <svg class="lemon-branch" viewBox="0 0 280 160" fill="none">
+      <path d="M30 130 Q80 80 140 60 Q190 42 250 55" stroke="#7a8c6e" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <path d="M70 100 Q85 75 95 55" stroke="#7a8c6e" stroke-width="1" fill="none" stroke-linecap="round"/>
+      <path d="M110 80 Q120 60 115 42" stroke="#7a8c6e" stroke-width="1" fill="none" stroke-linecap="round"/>
+      <path d="M150 65 Q162 48 158 30" stroke="#7a8c6e" stroke-width="1" fill="none" stroke-linecap="round"/>
+      <path d="M190 55 Q205 40 200 22" stroke="#7a8c6e" stroke-width="1" fill="none" stroke-linecap="round"/>
+      <path d="M230 57 Q240 45 252 42" stroke="#7a8c6e" stroke-width="1" fill="none" stroke-linecap="round"/>
+      <ellipse cx="62" cy="82" rx="12" ry="6" fill="#8fa37a" opacity="0.7" transform="rotate(-40 62 82)"/>
+      <ellipse cx="88" cy="68" rx="10" ry="5" fill="#7a8c6e" opacity="0.6" transform="rotate(-20 88 68)"/>
+      <ellipse cx="102" cy="50" rx="11" ry="5" fill="#8fa37a" opacity="0.7" transform="rotate(-55 102 50)"/>
+      <ellipse cx="130" cy="68" rx="12" ry="5" fill="#7a8c6e" opacity="0.6" transform="rotate(-10 130 68)"/>
+      <ellipse cx="155" cy="42" rx="10" ry="4.5" fill="#8fa37a" opacity="0.7" transform="rotate(-60 155 42)"/>
+      <ellipse cx="170" cy="55" rx="11" ry="5" fill="#7a8c6e" opacity="0.5" transform="rotate(10 170 55)"/>
+      <ellipse cx="198" cy="30" rx="10" ry="4.5" fill="#8fa37a" opacity="0.7" transform="rotate(-50 198 30)"/>
+      <ellipse cx="218" cy="48" rx="9" ry="4" fill="#7a8c6e" opacity="0.5" transform="rotate(5 218 48)"/>
+      <ellipse cx="248" cy="45" rx="10" ry="4.5" fill="#8fa37a" opacity="0.6" transform="rotate(-30 248 45)"/>
+      <ellipse cx="50" cy="108" rx="9" ry="4" fill="#7a8c6e" opacity="0.5" transform="rotate(-30 50 108)"/>
+      <ellipse cx="96" cy="48" rx="12" ry="9" fill="#e8d47a" opacity="0.9"/>
+      <ellipse cx="96" cy="48" rx="12" ry="9" fill="none" stroke="#c9b355" stroke-width="0.5" opacity="0.7"/>
+      <path d="M96 39 Q100 37 103 39" stroke="#c9b355" stroke-width="0.6" fill="none" stroke-linecap="round"/>
+      <ellipse cx="150" cy="30" rx="11" ry="8" fill="#dfc96e" opacity="0.85"/>
+      <ellipse cx="150" cy="30" rx="11" ry="8" fill="none" stroke="#c9b355" stroke-width="0.5" opacity="0.7"/>
+      <ellipse cx="200" cy="22" rx="10" ry="7.5" fill="#d4c96a" opacity="0.8"/>
+      <ellipse cx="252" cy="40" rx="10" ry="8" fill="#e8d47a" opacity="0.85"/>
+      <ellipse cx="252" cy="40" rx="10" ry="8" fill="none" stroke="#c9b355" stroke-width="0.5" opacity="0.7"/>
+      <circle cx="178" cy="68" r="3" fill="white" opacity="0.8"/>
+      <circle cx="178" cy="68" r="1.2" fill="#f5e8a0" opacity="0.9"/>
+      <path d="M130 10 Q120 2 110 8 Q120 14 130 10 Z" fill="#6b7c5e" opacity="0.7"/>
+      <path d="M130 10 Q140 2 150 8 Q140 14 130 10 Z" fill="#7a8c6e" opacity="0.7"/>
+      <circle cx="130" cy="10" r="3" fill="#5a6b4e" opacity="0.8"/>
+      <path d="M130 10 Q128 20 126 30" stroke="#6b7c5e" stroke-width="0.8" fill="none" stroke-linecap="round"/>
+      <path d="M130 10 Q132 20 134 30" stroke="#7a8c6e" stroke-width="0.8" fill="none" stroke-linecap="round"/>
+    </svg>
+  </div>
+
+  <div class="content">
+
+<p class="tagline">Luncheon</p>
+
+<div class="hero">
+  <p class="headline">We can't wait to</p>
+  <div class="squeeze">Squeeze</div>
+  <div class="you-text">You</div>
+</div>
+
+<div class="divider"></div>
+
+<p class="sub">Our sweetest little lemon is almost here!<br>Please join us to celebrate</p>
+
+<div class="name-block">
+  <span class="honoree">Evodia Lenong</span>
+  <span class="bundle">and her growing bundle of joy</span>
+</div>
+
+<div class="divider-ornament"><div class="orn-diamond"></div></div>
+
+<div class="details">
+
+  <div class="detail-row">
+    <div class="detail-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+    <div class="detail-text">
+      <span class="detail-label">Date & Time</span>
+      <span class="detail-value">Saturday, 6 June 2026 &nbsp;·&nbsp; 14h00</span>
+    </div>
+  </div>
+
+  <div class="detail-row">
+    <div class="detail-icon"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></div>
+    <div class="detail-text">
+      <span class="detail-label">Venue</span>
+      <span class="detail-value">Gerry &amp; Co · 1 Boschkop Road, Zwavelpoort, Pta<br><a href="https://maps.app.goo.gl/KGoLT1yDrxmR5Hm58?g_st=ic" target="_blank">↗️ View on Google Maps</a></span>
+    </div>
+  </div>
+
+  <div class="detail-row">
+    <div class="detail-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+    <div class="detail-text">
+      <span class="detail-label">Dress Code</span>
+      <span class="detail-value"><span class="theme-pill">Nude Tones</span></span>
+    </div>
+  </div>
+
+  <div class="detail-row">
+    <div class="detail-icon"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div>
+    <div class="detail-text">
+      <span class="detail-label">Gift</span>
+      <span class="detail-value">Strictly gift card, please</span>
+    </div>
+  </div>
+
+</div>
+
+<div class="rsvp-block">
+  <div class="rsvp-title">Kindly R.S.V.P &nbsp;·&nbsp; by Friday, 22 May 2026</div>
+  <a class="rsvp-button" href="rsvp.html">RSVP</a>
+  <p class="rsvp-note">Use the RSVP form to share your full name and welcome drinks preference.</p>
+</div>
+
+<p class="closing-note">Gifts are optional, your presence is our treasure!</p>
+
+<div class="bottom-art">
+  <svg viewBox="0 0 120 40" fill="none">
+    <path d="M10 20 Q30 5 60 20 Q90 35 110 20" stroke="#b8976a" stroke-width="0.8" fill="none" stroke-linecap="round"/>
+    <path d="M20 20 Q40 10 60 20 Q80 30 100 20" stroke="#b8976a" stroke-width="0.4" fill="none" stroke-linecap="round" opacity="0.5"/>
+    <circle cx="60" cy="20" r="2" fill="#b8976a" opacity="0.6"/>
+    <ellipse cx="40" cy="14" rx="6" ry="2.5" fill="#8fa37a" opacity="0.3" transform="rotate(-30 40 14)"/>
+    <ellipse cx="80" cy="26" rx="6" ry="2.5" fill="#8fa37a" opacity="0.3" transform="rotate(30 80 26)"/>
+  </svg>
+</div>
+
+  </div>
+</div>
+</body>
+</html>

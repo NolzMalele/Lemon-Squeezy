@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RSVP – Evodia Lenong Luncheon</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400&family=Pinyon+Script&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+--nude-deep: #c4a882;
+--nude-mid: #d9c4a8;
+--nude-light: #efe5d6;
+--nude-pale: #f8f2ea;
+--nude-cream: #fdf9f4;
+--gold: #b8976a;
+--dark: #4a3b2c;
+--text: #5c4a35;
+--soft: #8a7260;
+}
+html, body { min-height: 100%; }
+body {
+background: #e8ddd0;
+display: flex;
+align-items: center;
+justify-content: center;
+font-family: 'Jost', sans-serif;
+background-image:
+radial-gradient(ellipse at 20% 20%, rgba(196,168,130,0.18) 0%, transparent 60%),
+radial-gradient(ellipse at 80% 80%, rgba(184,151,106,0.14) 0%, transparent 60%);
+}
+.card {
+background: var(--nude-cream);
+width: min(420px, 96vw);
+max-width: 460px;
+min-height: 560px;
+position: relative;
+display: flex;
+flex-direction: column;
+align-items: center;
+overflow: hidden;
+box-shadow:
+0 0 0 1px rgba(184,151,106,0.3),
+0 4px 6px rgba(74,59,44,0.06),
+0 20px 60px rgba(74,59,44,0.18),
+0 60px 100px rgba(74,59,44,0.1);
+}
+.card::before {
+content: '';
+position: absolute;
+inset: 8px;
+border: 1px solid rgba(184,151,106,0.35);
+pointer-events: none;
+z-index: 10;
+}
+.card::after {
+content: '';
+position: absolute;
+inset: 12px;
+border: 1px solid rgba(184,151,106,0.18);
+pointer-events: none;
+z-index: 10;
+}
+.top-art {
+width: 100%;
+height: 110px;
+flex-shrink: 0;
+position: relative;
+background: linear-gradient(165deg, var(--nude-light) 0%, var(--nude-pale) 60%, var(--nude-cream) 100%);
+display: flex;
+align-items: center;
+justify-content: center;
+overflow: hidden;
+}
+.content {
+width: 100%;
+padding: 24px 30px 24px;
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 16px;
+}
+.tagline, .section-label {
+font-family: 'Jost', sans-serif;
+font-weight: 200;
+font-size: 8.5px;
+letter-spacing: 0.38em;
+color: var(--soft);
+text-transform: uppercase;
+text-align: center;
+}
+.heading {
+font-family: 'Cormorant Garamond', serif;
+font-weight: 500;
+font-size: 26px;
+letter-spacing: 0.08em;
+color: var(--text);
+text-align: center;
+}
+.description {
+font-family: 'Cormorant Garamond', serif;
+font-style: italic;
+font-weight: 300;
+font-size: 12px;
+color: var(--soft);
+text-align: center;
+line-height: 1.6;
+}
+.form-card {
+width: 100%;
+background: rgba(239,229,214,0.7);
+border: 1px solid rgba(184,151,106,0.4);
+border-radius: 16px;
+padding: 18px;
+display: grid;
+gap: 14px;
+}
+.field {
+display: flex;
+flex-direction: column;
+gap: 8px;
+}
+.field label {
+font-family: 'Cormorant Garamond', serif;
+font-size: 12px;
+color: var(--dark);
+}
+.field input[type="text"],
+.field select {
+width: 100%;
+padding: 12px 14px;
+border-radius: 12px;
+border: 1px solid rgba(184,151,106,0.4);
+background: #fff;
+font-family: 'Jost', sans-serif;
+font-size: 14px;
+color: var(--text);
+}
+.radios {
+display: grid;
+gap: 10px;
+}
+.radio-option {
+display: flex;
+align-items: center;
+gap: 10px;
+padding: 12px 14px;
+background: rgba(255,255,255,0.92);
+border: 1px solid rgba(184,151,106,0.35);
+border-radius: 12px;
+}
+.radio-option input {
+accent-color: var(--gold);
+}
+.submit-group {
+display: flex;
+flex-direction: column;
+gap: 12px;
+align-items: stretch;
+}
+.button,
+.admin-link {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+padding: 14px 18px;
+border-radius: 999px;
+background: linear-gradient(135deg, var(--nude-mid), var(--gold));
+color: #fff;
+text-decoration: none;
+font-family: 'Jost', sans-serif;
+font-weight: 500;
+letter-spacing: 0.08em;
+text-transform: uppercase;
+box-shadow: 0 8px 16px rgba(74,59,44,0.1);
+transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.button:hover,
+.admin-link:hover { transform: translateY(-1px); box-shadow: 0 12px 20px rgba(74,59,44,0.14); }
+.status {
+min-height: 42px;
+font-family: 'Cormorant Garamond', serif;
+font-size: 13px;
+color: var(--dark);
+text-align: center;
+}
+.footer-note {
+font-family: 'Cormorant Garamond', serif;
+font-style: italic;
+font-weight: 300;
+font-size: 11px;
+color: var(--soft);
+text-align: center;
+line-height: 1.5;
+}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="top-art"></div>
+  <div class="content">
+    <p class="tagline">R.S.V.P</p>
+    <h1 class="heading">Let us know you're coming</h1>
+    <p class="description">Please share your name and welcome drinks preference so we can greet you with the perfect refreshment.</p>
+    <form id="rsvpForm" class="form-card">
+      <div class="field">
+        <label for="guestName">Guest name</label>
+        <input type="text" id="guestName" name="guestName" placeholder="Enter your full name" required>
+      </div>
+      <div class="field">
+        <label>Welcome drink</label>
+        <div class="radios">
+          <label class="radio-option"><input type="radio" name="drink" value="Alcoholic" required> Alcoholic</label>
+          <label class="radio-option"><input type="radio" name="drink" value="Non-alcoholic" required> Non-alcoholic</label>
+        </div>
+      </div>
+      <div class="submit-group">
+        <button type="submit" class="button">Submit RSVP</button>
+        <div class="status" id="statusMessage"></div>
+      </div>
+    </form>
+  </div>
+</div>
+<script>
+const form = document.getElementById('rsvpForm');
+const status = document.getElementById('statusMessage');
+form.addEventListener('submit', event => {
+  event.preventDefault();
+  const name = document.getElementById('guestName').value.trim();
+  const drink = form.elements['drink'].value;
+  if (!name || !drink) {
+    status.textContent = 'Please enter your name and select a welcome drink.';
+    return;
+  }
+  const button = form.querySelector('button[type="submit"]');
+  button.disabled = true;
+  status.textContent = 'Submitting…';
+  fetch('http://localhost:3000/api/rsvp', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name, drink })
+  }).then(r => {
+    if (!r.ok) throw new Error('Server error');
+    return r.json();
+  }).then(() => {
+    window.location.href = 'thank-you.html';
+  }).catch(err => {
+    status.textContent = 'Something went wrong. Please try again.';
+    button.disabled = false;
+  });
+});
+</script>
+</body>
+</html>

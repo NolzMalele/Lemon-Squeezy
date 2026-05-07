@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard – Evodia Lenong Luncheon</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400&family=Pinyon+Script&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+--nude-deep: #c4a882;
+--nude-mid: #d9c4a8;
+--nude-light: #efe5d6;
+--nude-pale: #f8f2ea;
+--nude-cream: #fdf9f4;
+--gold: #b8976a;
+--dark: #4a3b2c;
+--text: #5c4a35;
+--soft: #8a7260;
+}
+html, body { min-height: 100%; }
+body {
+background: #e8ddd0;
+display: flex;
+align-items: center;
+justify-content: center;
+font-family: 'Jost', sans-serif;
+background-image:
+radial-gradient(ellipse at 20% 20%, rgba(196,168,130,0.18) 0%, transparent 60%),
+radial-gradient(ellipse at 80% 80%, rgba(184,151,106,0.14) 0%, transparent 60%);
+}
+.card {
+background: var(--nude-cream);
+width: min(460px, 96vw);
+max-width: 760px;
+min-height: 640px;
+position: relative;
+display: flex;
+flex-direction: column;
+align-items: center;
+overflow: hidden;
+box-shadow:
+0 0 0 1px rgba(184,151,106,0.3),
+0 4px 6px rgba(74,59,44,0.06),
+0 20px 60px rgba(74,59,44,0.18),
+0 60px 100px rgba(74,59,44,0.1);
+}
+.card::before {
+content: '';
+position: absolute;
+inset: 8px;
+border: 1px solid rgba(184,151,106,0.35);
+pointer-events: none;
+z-index: 10;
+}
+.card::after {
+content: '';
+position: absolute;
+inset: 12px;
+border: 1px solid rgba(184,151,106,0.18);
+pointer-events: none;
+z-index: 10;
+}
+.top-art {
+width: 100%;
+height: 110px;
+flex-shrink: 0;
+position: relative;
+background: linear-gradient(165deg, var(--nude-light) 0%, var(--nude-pale) 60%, var(--nude-cream) 100%);
+display: flex;
+align-items: center;
+justify-content: center;
+overflow: hidden;
+}
+.content {
+width: 100%;
+padding: 24px 32px 28px;
+display: flex;
+flex-direction: column;
+gap: 18px;
+}
+.tagline {
+font-family: 'Jost', sans-serif;
+font-weight: 200;
+font-size: 8.5px;
+letter-spacing: 0.38em;
+color: var(--soft);
+text-transform: uppercase;
+text-align: center;
+}
+.heading {
+font-family: 'Cormorant Garamond', serif;
+font-weight: 500;
+font-size: 30px;
+letter-spacing: 0.08em;
+color: var(--text);
+text-align: center;
+}
+.description {
+font-family: 'Cormorant Garamond', serif;
+font-style: italic;
+font-weight: 300;
+font-size: 12px;
+color: var(--soft);
+text-align: center;
+line-height: 1.6;
+}
+.controls {
+display: flex;
+flex-wrap: wrap;
+gap: 12px;
+justify-content: center;
+}
+.button {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+padding: 12px 18px;
+border-radius: 999px;
+background: linear-gradient(135deg, var(--nude-mid), var(--gold));
+color: #fff;
+text-decoration: none;
+font-family: 'Jost', sans-serif;
+font-weight: 500;
+letter-spacing: 0.08em;
+text-transform: uppercase;
+box-shadow: 0 8px 16px rgba(74,59,44,0.1);
+transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.summary-card {
+width: 100%;
+background: rgba(239,229,214,0.7);
+border: 1px solid rgba(184,151,106,0.4);
+border-radius: 18px;
+padding: 18px;
+display: grid;
+gap: 14px;
+}
+.stats-grid {
+display: grid;
+grid-template-columns: repeat(3, minmax(0, 1fr));
+gap: 12px;
+}
+.stat-item {
+background: #fff;
+border: 1px solid rgba(184,151,106,0.25);
+border-radius: 16px;
+padding: 14px;
+text-align: center;
+}
+.stat-label {
+font-family: 'Jost', sans-serif;
+font-size: 8.5px;
+letter-spacing: 0.28em;
+text-transform: uppercase;
+color: var(--gold);
+margin-bottom: 8px;
+}
+.stat-value {
+font-family: 'Cormorant Garamond', serif;
+font-size: 22px;
+color: var(--dark);
+}
+.button:hover { transform: translateY(-1px); box-shadow: 0 12px 20px rgba(74,59,44,0.14); }
+.table-card {
+width: 100%;
+background: rgba(239,229,214,0.7);
+border: 1px solid rgba(184,151,106,0.4);
+border-radius: 18px;
+padding: 18px;
+}
+.guest-table {
+width: 100%;
+border-collapse: collapse;
+font-family: 'Cormorant Garamond', serif;
+}
+.guest-table th,
+.guest-table td {
+padding: 12px 10px;
+text-align: left;
+vertical-align: top;
+border-bottom: 1px solid rgba(74,59,44,0.08);
+}
+.guest-table th {
+font-size: 12px;
+letter-spacing: 0.16em;
+text-transform: uppercase;
+color: var(--gold);
+}
+.guest-table td {
+font-size: 14px;
+color: var(--dark);
+}
+.empty-state {
+font-family: 'Cormorant Garamond', serif;
+font-size: 14px;
+color: var(--soft);
+text-align: center;
+padding: 24px 0;
+}
+.remove-btn {
+background: none;
+border: 1px solid rgba(184,151,106,0.4);
+border-radius: 6px;
+padding: 4px 10px;
+font-family: 'Jost', sans-serif;
+font-size: 10px;
+letter-spacing: 0.05em;
+color: var(--soft);
+cursor: pointer;
+transition: background 0.2s, color 0.2s;
+white-space: nowrap;
+}
+.remove-btn:hover {
+background: #d4a0a0;
+color: #fff;
+border-color: #d4a0a0;
+}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="top-art"></div>
+  <div class="content">
+    <p class="tagline">Organiser Dashboard</p>
+    <h1 class="heading">Guest list & welcome drinks</h1>
+    <p class="description">Review the RSVP submissions and their preferred welcome drink. Refresh after each new guest RSVP.</p>
+    <div class="controls">
+      <button id="refreshButton" class="button" type="button">Refresh</button>
+      <a class="button" href="rsvp.html">Add RSVP</a>
+    </div>
+    <div class="summary-card">
+      <div class="stats-grid">
+        <div class="stat-item"><div class="stat-label">Total guests</div><div class="stat-value" id="totalGuests">0</div></div>
+        <div class="stat-item"><div class="stat-label">Alcoholic</div><div class="stat-value" id="alcoholicCount">0</div></div>
+        <div class="stat-item"><div class="stat-label">Non-alcoholic</div><div class="stat-value" id="nonAlcoholicCount">0</div></div>
+      </div>
+    </div>
+    <div class="table-card">
+      <table class="guest-table" id="guestTable">
+        <thead>
+          <tr><th>Guest name</th><th>Welcome drink</th><th>Submitted</th><th></th></tr>
+        </thead>
+        <tbody id="guestBody"></tbody>
+      </table>
+      <div class="empty-state" id="emptyState">Loading guest list…</div>
+    </div>
+  </div>
+</div>
+<script>
+const guestBody = document.getElementById('guestBody');
+const emptyState = document.getElementById('emptyState');
+const refreshButton = document.getElementById('refreshButton');
+const totalGuestsEl = document.getElementById('totalGuests');
+const alcoholicCountEl = document.getElementById('alcoholicCount');
+const nonAlcoholicCountEl = document.getElementById('nonAlcoholicCount');
+
+function updateSummary(guests) {
+  totalGuestsEl.textContent = guests.length;
+  alcoholicCountEl.textContent = guests.filter(g => g.drink === 'Alcoholic').length;
+  nonAlcoholicCountEl.textContent = guests.filter(g => g.drink === 'Non-alcoholic').length;
+}
+
+function loadGuests() {
+  guestBody.innerHTML = '';
+  fetch('http://localhost:3000/api/guests').then(r => r.json()).then(guests => {
+    updateSummary(guests);
+    if (!guests.length) {
+      emptyState.textContent = 'No RSVPs yet. The guest list will appear here once submissions are received.';
+      emptyState.style.display = 'block';
+      return;
+    }
+    emptyState.style.display = 'none';
+    guests.forEach(guest => {
+      const row = document.createElement('tr');
+      row.innerHTML = `<td>${guest.name}</td><td>${guest.drink}</td><td>${guest.submittedAt}</td><td><button class="remove-btn" data-id="${guest.id}">Remove</button></td>`;
+      guestBody.appendChild(row);
+    });
+    document.querySelectorAll('.remove-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (!confirm(`Remove ${btn.closest('tr').children[0].textContent} from the guest list?`)) return;
+        fetch('http://localhost:3000/api/guests/' + btn.dataset.id, { method: 'DELETE' }).then(r => {
+          if (r.ok) loadGuests();
+        });
+      });
+    });
+  });
+}
+
+refreshButton.addEventListener('click', loadGuests);
+loadGuests();
+</script>
+</body>
+</html>
