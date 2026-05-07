@@ -84,7 +84,7 @@ app.post('/api/rsvp', async (req, res) => {
     }
     res.status(201).json(guest);
   } catch (err) {
-    res.status(500).json({ error: 'Failed to save RSVP' });
+    res.status(500).json({ error: 'Failed to save RSVP', detail: err.message });
   }
 });
 
