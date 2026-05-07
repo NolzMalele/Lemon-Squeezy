@@ -9,6 +9,11 @@ const PORT = process.env.PORT || 3000;
 
 const MONGODB_URI = process.env.MONGODB_URI;
 const DATA_FILE = path.join(__dirname, 'guests.json');
+const TMP_FILE = path.join('/tmp', 'guests.json');
+
+function getDataFile() {
+  return process.env.VERCEL && !MONGODB_URI ? TMP_FILE : DATA_FILE;
+}
 
 app.use(cors());
 app.use(express.json());
@@ -26,14 +31,15 @@ async function getDb() {
 }
 
 function readGuestsFromFile() {
+  const file = getDataFile();
   try {
-    if (!fs.existsSync(DATA_FILE)) return [];
-    return JSON.parse(fs.readFileSync(DATA_FILE, 'utf8'));
+    if (!fs.existsSync(file)) return [];
+    return JSON.parse(fs.readFileSync(file, 'utf8'));
   } catch { return []; }
 }
 
 function writeGuestsToFile(guests) {
-  fs.writeFileSync(DATA_FILE, JSON.stringify(guests, null, 2));
+  fs.writeFileSync(getDataFile(), JSON.stringify(guests, null, 2));
 }
 
 async function readGuests() {
