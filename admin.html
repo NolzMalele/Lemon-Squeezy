@@ -212,9 +212,41 @@ transition: background 0.2s, color 0.2s;
 white-space: nowrap;
 }
 .remove-btn:hover {
-background: #d4a0a0;
-color: #fff;
-border-color: #d4a0a0;
+  background: #d4a0a0;
+  color: #fff;
+  border-color: #d4a0a0;
+}
+
+@media (max-width: 520px) {
+  .card {
+    width: 100vw;
+    min-height: auto;
+    border-radius: 0;
+  }
+  .card::before, .card::after { display: none; }
+  .top-art { height: 70px; }
+  .content { padding: 18px 18px 24px; gap: 14px; }
+  .heading { font-size: 22px; }
+  .description { font-size: 11px; }
+  .stats-grid { grid-template-columns: 1fr; gap: 8px; }
+  .stat-item { padding: 10px; display: flex; justify-content: space-between; align-items: center; }
+  .stat-label { margin-bottom: 0; font-size: 9px; }
+  .stat-value { font-size: 18px; }
+  .table-card { padding: 12px; overflow-x: auto; }
+  .guest-table th, .guest-table td { padding: 8px 6px; font-size: 12px; }
+  .guest-table th { font-size: 10px; }
+  .controls { gap: 8px; }
+  .button { padding: 10px 14px; font-size: 11px; }
+}
+
+@media (min-width: 521px) and (max-width: 760px) {
+  .card { width: 96vw; min-height: auto; }
+  .content { padding: 20px 24px 28px; }
+  .heading { font-size: 26px; }
+  .stats-grid { gap: 10px; }
+  .stat-item { padding: 12px; }
+  .table-card { padding: 14px; overflow-x: auto; }
+  .guest-table th, .guest-table td { padding: 10px 8px; font-size: 13px; }
 }
 </style>
 </head>
